@@ -137,6 +137,20 @@ async def customer_orders(request: Request):
     return templates.TemplateResponse("customer_orders.html", {"request": request})
 
 
+@app.get("/account", response_class=HTMLResponse, summary="アカウント情報ページ")
+async def account_page(request: Request):
+    """お客様向けアカウント情報ページ（デモ表示）"""
+    # 実際は認証済みユーザー情報を渡す想定。ここではデモ用のダミーデータを渡す。
+    user = {
+        "full_name": "山田 太郎",
+        "phone": "090-1234-5678",
+        "address": "東京都千代田区1-1-1",
+        "username": "yamada",
+        "email": "taro@example.com",
+    }
+    return templates.TemplateResponse("account.html", {"request": request, "user": user})
+
+
 @app.get("/store/dashboard", response_class=HTMLResponse, summary="店舗ダッシュボード")
 async def store_dashboard(request: Request):
     """店舗向けダッシュボード画面"""

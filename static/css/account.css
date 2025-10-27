@@ -1,0 +1,130 @@
+/* 軽量でおしゃれなお弁当屋さん風スタイル */
+:root{
+    --accent-1: #ffb347; /* お弁当の暖色 */
+    --accent-2: #ff7043; /* アクセント */
+    --muted: #6b6b6b;
+    --card-bg: #fff9f3;
+    --radius: 12px;
+}
+
+body{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "メイリオ", "Helvetica Neue", Arial;
+    background: linear-gradient(180deg, #fffefc 0%, #fff8f0 100%);
+    color:#333;
+}
+
+.container{
+    max-width: 980px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.profile-card{
+    background: linear-gradient(180deg, var(--card-bg), #fff);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 24px rgba(100,80,60,0.08);
+    overflow: hidden;
+    border: 1px solid rgba(200,150,120,0.12);
+}
+
+.profile-header{
+    display:flex;
+    gap:1rem;
+    align-items:center;
+    padding:1.25rem 1.5rem;
+    background: linear-gradient(90deg, rgba(255,180,80,0.08), rgba(255,110,60,0.04));
+}
+
+.profile-header .logo{
+    width:64px;
+    height:64px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2rem;
+    background: linear-gradient(135deg, #ffd89b, #ffb347);
+    box-shadow: 0 4px 12px rgba(255,140,60,0.12);
+}
+
+.profile-header h1{
+    margin:0;
+    font-size:1.4rem;
+}
+
+.subtitle{
+    margin:0.15rem 0 0;
+    color:var(--muted);
+    font-size:0.95rem;
+}
+
+.profile-body{
+    padding:1.5rem;
+}
+
+.info-list{
+    display:grid;
+    gap:0.75rem;
+}
+
+.info-row{
+    display:flex;
+    gap:1rem;
+    align-items:center;
+    padding:0.6rem 0.5rem;
+    border-radius:8px;
+}
+
+.info-row dt{
+    min-width:140px;
+    font-weight:600;
+    color:var(--accent-2);
+}
+
+.info-row dd{
+    margin:0;
+    color:#333;
+    background: rgba(255,240,230,0.6);
+    padding:0.5rem 0.75rem;
+    border-radius:8px;
+    width:100%;
+}
+
+.actions{
+    margin-top:1.25rem;
+    display:flex;
+    gap:0.75rem;
+}
+
+.btn{
+    display:inline-block;
+    padding:0.6rem 1rem;
+    border-radius:8px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+}
+
+.btn-primary{
+    background: linear-gradient(90deg,#ff8a65,#ff7043);
+}
+
+.btn-edit{
+    background: linear-gradient(90deg,#fff1e6,#ffd6b3);
+    color:var(--accent-2);
+    border:1px solid rgba(255,120,80,0.08);
+}
+
+.profile-footer{
+    padding:1rem 1.5rem;
+    background: rgba(255,250,245,0.6);
+    border-top:1px solid rgba(200,150,120,0.06);
+    color:var(--muted);
+    font-size:0.95rem;
+}
+
+@media (max-width:768px){
+    .info-row{flex-direction:column;align-items:flex-start}
+    .info-row dt{min-width:unset}
+}
