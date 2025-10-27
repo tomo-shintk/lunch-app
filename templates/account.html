@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アカウント情報 - 弁当注文システム</title>
+    <link rel="stylesheet" href="/static/css/account.css">
+</head>
+<body>
+    {% include "components/guest_header.html" %}
+
+    <main class="account-page">
+        <div class="container">
+            <section class="profile-card">
+                <div class="profile-header">
+                    <div class="logo">🍱</div>
+                    <div>
+                        <h1>アカウント情報</h1>
+                        <p class="subtitle">お弁当屋さんの雰囲気を感じるプロフィール</p>
+                    </div>
+                </div>
+
+                <div class="profile-body">
+                    <dl class="info-list">
+                        <div class="info-row">
+                            <dt>氏名</dt>
+                            <dd>{{ user.full_name if user and user.full_name else "未登録" }}</dd>
+                        </div>
+
+                        <div class="info-row">
+                            <dt>電話番号</dt>
+                            <dd>{{ user.phone if user and user.phone else "未登録" }}</dd>
+                        </div>
+
+                        <div class="info-row">
+                            <dt>住所（仮）</dt>
+                            <dd>{{ user.address if user and user.address else "未登録" }}</dd>
+                        </div>
+
+                        <div class="info-row">
+                            <dt>アカウント名</dt>
+                            <dd>{{ user.username if user and user.username else "未登録" }}</dd>
+                        </div>
+
+                        <div class="info-row">
+                            <dt>メールアドレス</dt>
+                            <dd>{{ user.email if user and user.email else "未登録" }}</dd>
+                        </div>
+                    </dl>
+
+                    <div class="actions">
+                        <a href="/profile/edit" class="btn btn-edit">編集する</a>
+                        <a href="/menus" class="btn btn-primary">メニューに戻る</a>
+                    </div>
+                </div>
+
+                <footer class="profile-footer">
+                    <p>いつものお弁当を、今日もあなたへ — 弁当注文システム</p>
+                </footer>
+            </section>
+        </div>
+    </main>
+
+</body>
+</html>
