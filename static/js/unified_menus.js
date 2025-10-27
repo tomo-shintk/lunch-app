@@ -307,6 +307,41 @@ function renderMenus(menus) {
     console.log('✅ メニュー表示完了');
 }
 
+// カテゴリ名からバッジHTMLを生成
+function getCategoryBadgeHtml(categoryName) {
+    if (!categoryName) return '';
+    const name = categoryName.toString();
+    const lower = name.toLowerCase();
+
+    let cls = 'badge--classic';
+    let icon = '/static/icons/icon-classic.svg';
+
+    if (lower.includes('サイド') || lower.includes('side')) {
+        cls = 'badge--side';
+        icon = '/static/icons/icon-side.svg';
+    } else if (lower.includes('ヘルシー') || lower.includes('健康') || lower.includes('ベジ')) {
+        cls = 'badge--healthy';
+        icon = '/static/icons/icon-leaf.svg';
+    } else if (lower.includes('海') || lower.includes('魚') || lower.includes('シーフード')) {
+        cls = 'badge--sea';
+        icon = '/static/icons/icon-fish.svg';
+    } else if (lower.includes('肉') || lower.includes('焼') || lower.includes('ミート')) {
+        cls = 'badge--meat';
+        icon = '/static/icons/icon-meat.svg';
+    } else if (lower.includes('丼') || lower.includes('どん')) {
+        cls = 'badge--bowl';
+        icon = '/static/icons/icon-bowl.svg';
+    } else if (lower.includes('定番') || lower.includes('classic')) {
+        cls = 'badge--classic';
+        icon = '/static/icons/icon-classic.svg';
+    }
+
+    return `<span class="menu-badge badge ${cls} badge--pill" role="status" aria-label="${escapeHtml(name)}">` +
+           `<img src="${icon}" class="badge-icon" alt="" aria-hidden="true">` +
+           `<span class="badge-text">${escapeHtml(name)}</span>` +
+           `</span>`;
+}
+
 function createMenuCard(menu) {
     const card = document.createElement('div');
     card.className = 'menu-card';
@@ -315,9 +350,9 @@ function createMenuCard(menu) {
     // 画像URL
     const imageUrl = menu.image_url || '/static/images/menu-placeholder.jpg';
 
-    // カテゴリバッジ
+    // カテゴリバッジ（アイコン＋テーマカラー）
     const categoryBadge = menu.category
-        ? `<span class="menu-badge">${escapeHtml(menu.category.name)}</span>`
+        ? getCategoryBadgeHtml(menu.category.name)
         : '';
 
     card.innerHTML = `
