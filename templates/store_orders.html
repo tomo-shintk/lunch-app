@@ -54,28 +54,33 @@
                                placeholder="注文番号、顧客名、メニュー名で検索...">
                     </div>
 
-                    <!-- ステータスフィルター -->
-                    <div class="filter-group">
+                    <!-- ステータスフィルター（グリッド／縦並びで見やすく） -->
+                    <div class="filter-group filter-status">
                         <label>ステータス:</label>
-                        <div class="status-checkboxes">
-                            <label><input type="checkbox" class="status-checkbox" value="pending" checked> 注文受付</label>
-                            <label><input type="checkbox" class="status-checkbox" value="confirmed" checked> 注文確認済み</label>
-                            <label><input type="checkbox" class="status-checkbox" value="preparing" checked> 調理中</label>
-                            <label><input type="checkbox" class="status-checkbox" value="ready" checked> 準備完了</label>
-                            <label><input type="checkbox" class="status-checkbox" value="completed"> 受け渡し完了</label>
-                            <label><input type="checkbox" class="status-checkbox" value="cancelled"> キャンセル</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" class="status-checkbox" value="pending" checked> <span>注文受付</span></label>
+                            <label class="checkbox-label"><input type="checkbox" class="status-checkbox" value="confirmed" checked> <span>注文確認済み</span></label>
+                            <label class="checkbox-label"><input type="checkbox" class="status-checkbox" value="preparing" checked> <span>調理中</span></label>
+                            <label class="checkbox-label"><input type="checkbox" class="status-checkbox" value="ready" checked> <span>準備完了</span></label>
+                            <label class="checkbox-label"><input type="checkbox" class="status-checkbox" value="completed"> <span>受け渡し完了</span></label>
+                            <label class="checkbox-label"><input type="checkbox" class="status-checkbox" value="cancelled"> <span>キャンセル</span></label>
                         </div>
                     </div>
 
-                    <!-- 日付フィルター -->
-                    <div class="filter-group">
-                        <label for="startDate">開始日:</label>
-                        <input type="date" id="startDate" class="form-control">
-                    </div>
-
-                    <div class="filter-group">
-                        <label for="endDate">終了日:</label>
-                        <input type="date" id="endDate" class="form-control">
+                    <!-- 日付フィルター（開始日 / 終了日 を横並びで視認性向上） -->
+                    <div class="filter-group filter-date-range">
+                        <label>期間指定:</label>
+                        <div class="date-range-wrapper">
+                            <div class="date-input-group">
+                                <label for="startDate" class="info-label">開始日</label>
+                                <input type="date" id="startDate" class="date-input" placeholder="開始日">
+                            </div>
+                            <div class="date-separator" aria-hidden="true">〜</div>
+                            <div class="date-input-group">
+                                <label for="endDate" class="info-label">終了日</label>
+                                <input type="date" id="endDate" class="date-input" placeholder="終了日">
+                            </div>
+                        </div>
                     </div>
 
                     <!-- 並び順 -->

@@ -21,8 +21,8 @@
         <!-- フィルター -->
         <div class="orders-filters">
                 <div class="filter-group">
-                    <label for="statusFilter">ステータスで絞り込み</label>
-                    <select id="statusFilter" class="form-control">
+                    <label for="statusFilter">ステータス</label>
+                    <select id="statusFilter" class="filter-select">
                         <option value="">全ての注文</option>
                         <option value="pending">注文受付</option>
                         <option value="ready">準備完了</option>
@@ -30,13 +30,20 @@
                         <option value="cancelled">キャンセル</option>
                     </select>
                 </div>
-                <div class="filter-group">
-                    <label for="dateFromFilter">期間で絞り込み(開始日)</label>
-                    <input type="date" id="dateFromFilter" class="form-control">
-                </div>
-                <div class="filter-group">
-                    <label for="dateToFilter">期間で絞り込み(終了日)</label>
-                    <input type="date" id="dateToFilter" class="form-control">
+
+                <div class="filter-group filter-date-range">
+                    <label>期間</label>
+                    <div class="date-range-wrapper">
+                        <div class="date-input-group">
+                            <label for="dateFromFilter" class="info-label">開始日</label>
+                            <input type="date" id="dateFromFilter" class="date-input">
+                        </div>
+                        <div class="date-separator" aria-hidden="true">〜</div>
+                        <div class="date-input-group">
+                            <label for="dateToFilter" class="info-label">終了日</label>
+                            <input type="date" id="dateToFilter" class="date-input">
+                        </div>
+                    </div>
                 </div>
             </div>
 
