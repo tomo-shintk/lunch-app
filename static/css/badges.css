@@ -1,0 +1,88 @@
+/* カテゴリーバッジ用スタイル
+   仕様:
+   - 角丸ピル型
+   - 丸ゴシック体（フォントは環境依存、適宜読み込んでください）
+   - 各カテゴリごとにテーマカラー
+   - 軽いシャドウ / ごく薄い縦グラデで立体感
+*/
+:root{
+  --badge-padding-y: 6px;
+  --badge-padding-x: 10px;
+  --badge-font-size: 0.87rem;
+  --badge-gap: 8px;
+  --badge-radius-pill: 999px;
+  --badge-shadow: 0 2px 6px rgba(16,24,32,0.08);
+  --badge-gradient-alpha: 0.06;
+
+  /* カラーパレット */
+  --color-side: #F5EDE0;    /* ベージュ系 */
+  --color-healthy: #66BB6A; /* 明るめグリーン */
+  --color-sea: #1E88E5;     /* 鮮やかなブルー */
+  --color-classic: #6C757D; /* 落ち着いたグレー */
+  --color-meat: #C62828;    /* 深みのあるレッド */
+  --color-bowl: #FB8C00;    /* 明るいオレンジ */
+
+  --badge-text-dark: #102028; /* テキスト色（薄い背景向け） */
+  --badge-text-light: #ffffff; /* テキスト色（濃色向け） */
+}
+
+/* ベース */
+.menu-badge,
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--badge-padding-y) var(--badge-padding-x);
+  font-size: var(--badge-font-size);
+  line-height: 1;
+  font-weight: 600;
+  font-family: "Noto Sans JP", "Rounded M+ 1c", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  box-shadow: var(--badge-shadow);
+  border: none;
+  color: var(--badge-text-light);
+}
+
+.badge--pill { border-radius: var(--badge-radius-pill); }
+.badge__icon, .badge-icon { width: 16px; height: 16px; display:inline-block; flex:0 0 16px; }
+.badge-text { display:inline-block; padding-right:2px; }
+
+/* ホバー/フォーカス時の軽い浮き */
+.badge:hover,
+.badge:focus{
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(16,24,32,0.10);
+}
+
+/* カテゴリ別スタイル（背景にごく薄い縦グラデを重ねる） */
+.badge--side{
+  background: linear-gradient(180deg, rgba(245,237,226,var(--badge-gradient-alpha)), rgba(255,255,255,0)) , var(--color-side);
+  color: var(--badge-text-dark);
+}
+.badge--healthy{
+  background: linear-gradient(180deg, rgba(102,187,106,var(--badge-gradient-alpha)), rgba(255,255,255,0)), var(--color-healthy);
+  color: var(--badge-text-light);
+}
+.badge--sea{
+  background: linear-gradient(180deg, rgba(30,136,229,var(--badge-gradient-alpha)), rgba(255,255,255,0)), var(--color-sea);
+  color: var(--badge-text-light);
+}
+.badge--classic{
+  background: linear-gradient(180deg, rgba(108,117,125,var(--badge-gradient-alpha)), rgba(255,255,255,0)), var(--color-classic);
+  color: var(--badge-text-light);
+}
+.badge--meat{
+  background: linear-gradient(180deg, rgba(198,40,40,var(--badge-gradient-alpha)), rgba(255,255,255,0)), var(--color-meat);
+  color: var(--badge-text-light);
+}
+.badge--bowl{
+  background: linear-gradient(180deg, rgba(251,140,0,var(--badge-gradient-alpha)), rgba(255,255,255,0)), var(--color-bowl);
+  color: var(--badge-text-light);
+}
+
+/* サイズバリエーション */
+.badge--sm { padding: 4px 8px; font-size: 0.78rem; }
+
+/* ユーザーが環境で強制的に高コントラストを要求している場合のフォールバック */
+@media (prefers-contrast: more){
+  .badge { box-shadow: none; border: 1px solid rgba(0,0,0,0.12); }
+}
